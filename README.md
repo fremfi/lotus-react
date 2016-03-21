@@ -1,2 +1,3 @@
 # Developer-Portfolio-Website
-Developer's portfolio showcasing his/her accomplishment
+Developer's portfolio showcasing his/her accomplishment.
+JS-Library: ReactJS
