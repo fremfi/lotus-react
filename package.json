@@ -2,8 +2,9 @@
   "name": "fjmva",
   "version": "1.0.0",
   "description": "frederick mfinanga's personal website",
-  "main": "main.js",
+  "main": "server.js",
   "scripts": {
+    "postinstall": "webpack --config ./webpack-prod.config.js --progress --colors",
     "start": "node server"
   },
   "author": "frederick mfinanga",

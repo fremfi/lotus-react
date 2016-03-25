@@ -7,23 +7,14 @@ var mainPath = path.resolve(__dirname, 'app', 'main.jsx');
 module.exports = {
 	context: path.resolve('src'),
 	entry: [
-		'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
-		'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-		mainPath// Appʼs entry point
+		mainPath
 	],
 	output: {
 		path: buildPath,
-		publicPath: '/build/',
+		publicPath: '/public/',
 		filename: 'bundle.js'
 	},
 	module: {
-		// preLoaders: [
-		// 	{
-		// 		test: /\.js$/,
-		// 		exclude: /node_modules/,
-		// 		loader: 'jshint-loader'
-		// 	}
-		// ],
 		loaders: [
 			{
 				test: /\.jsx?$/,
@@ -47,11 +38,7 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [
-	    new Webpack.HotModuleReplacementPlugin(),
-	    new Webpack.NoErrorsPlugin()
-  	],
-	devtool: 'eval',
+	devtool: 'source-map',
 
 	resolve: {
 		extensions: ['', '.js', '.jsx', '.es6']
