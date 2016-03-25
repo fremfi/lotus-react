@@ -7,9 +7,8 @@ var proxy = httpProxy.createProxyServer();
 var app = express();
 var isProduction = process.env.NODE_ENV === 'production';
 var port = isProduction ? process.env.PORT : 3000;
-//var publicPath = path.resolve(__dirname, 'build');
 var publicPath = path.join(__dirname, 'public');
-//app.set('port', (process.env.PORT || 5000));
+
 app.use(express.static(publicPath));
 app.get('/', function (req, res) {
   res.sendFile('index.html', {
