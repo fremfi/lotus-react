@@ -6,13 +6,14 @@ var httpProxy = require('http-proxy');
 var proxy = httpProxy.createProxyServer();
 var app = express();
 var isProduction = process.env.NODE_ENV === 'production';
-var port = isProduction ? process.env.PORT : 3000;
+//var port = isProduction ? process.env.PORT : 3000;
 var publicPath = path.resolve(__dirname, 'public');
-
+app.set('port', (process.env.PORT || 5000));
 app.use(express.static(publicPath));
 
 app.use(bodyParser.json()); // for parsing application/json
 
+console.log(isProduction);
 // Run the workflow (bundling) when not in production
 if (!isProduction) {
   var bundle = require('./server/bundle.js');
