@@ -27,7 +27,7 @@ if (!isProduction) {
   // to webpack-dev-server
   app.all('/build/*', function (req, res) {
     proxy.web(req, res, {
-        target: 'http://localhost:8080'
+      target: 'http://localhost:8080'
     });
   });
 
@@ -39,32 +39,29 @@ proxy.on('error', function(e) {
 
 //Sending Emails
 var nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
+var mg = require('nodemailer-mailgun-transport');
 var credentials = require('./credentials');
-var smtpTransportOptions = {
-    service: 'gmail',
-    auth: {
-        user: credentials.smtpTransportOptions.auth.user,
-        pass: credentials.smtpTransportOptions.auth.password
-    }
-  };
-  
-var mailTransport = nodemailer.createTransport(smtpTransport(smtpTransportOptions));
+var auth = {
+  auth: {
+    api_key: 'key-222c94114eb5d35ceff29974511c8b6d',
+    domain: 'sandbox9ea32a98787e45f99414f1a54e1b4792.mailgun.org'
+  }
+};
+var nodemailerMailgun = nodemailer.createTransport(mg(credentials.mgAuth));
 
 app.post('/e-mail', function(req, res) {
-  var mailOptions = {
-    from: '"'+ req.body.fullName +'" <' + req.body.email + '>', // sender's address
-    to: 'frederick.mfinanga@gmail.com', // list of receivers
-    subject: 'FJMVA: Your services are needed', // Subject 
+  nodemailerMailgun.sendMail({
+    from: '"'+ req.body.fullName +'" <' + req.body.email + '>',
+    to: 'frederick.mfinanga@gmail.com', 
+    subject: 'FJMVA: Your services are needed',
     text: req.body.msg
-  };
-
-  // send mail with defined transport object
-  mailTransport.sendMail(mailOptions, function(error, info){
-    if(error){
-        return console.log(error);
+  }, function (err, info) {
+    if (err) {
+      console.log('Error sending email: ' + err);
     }
-    console.log('Message sent: ' + info.response);
+    else {
+      console.log('Success sending email: ' + JSON.stringify(info));
+    }
   });
   res.send(req.body);
 });
