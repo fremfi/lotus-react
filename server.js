@@ -2,40 +2,25 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var http = require('http');
-var httpProxy = require('http-proxy');
-var proxy = httpProxy.createProxyServer();
 var app = express();
 var isProduction = process.env.NODE_ENV === 'production';
-var port = isProduction ? process.env.PORT : 3000;
+var port = isProduction ? process.env.PORT : 8080;
 var publicPath = path.join(__dirname, 'public');
 
-app.use(express.static(publicPath));
-app.get('/', function (req, res) {
-  res.sendFile('index.html', {
-    root: static_path
+if (isProduction) {
+  app.use(express.static(publicPath));
+  app.get('/', function (req, res) {
+    res.sendFile('index.html', {
+      root: static_path
+    });
   });
+}
+
+app.get('/v1/test', function (req, res) {
+  res.send('back-end works');
 });
 
 app.use(bodyParser.json()); // for parsing application/json
-
-// Run the workflow (bundling) when not in production
-if (!isProduction) {
-  var bundle = require('./server/bundle.js');
-  bundle();
-
-  // requests to localhost:3000/build is proxied
-  // to webpack-dev-server
-  app.all('/build/*', function (req, res) {
-    proxy.web(req, res, {
-      target: 'http://localhost:8080'
-    });
-  });
-
-}
-
-proxy.on('error', function(e) {
-  console.log('Could not connect to proxy, please try again...');
-});
 
 //Sending Emails
 var nodemailer = require('nodemailer');
@@ -49,7 +34,7 @@ var auth = {
 };
 var nodemailerMailgun = nodemailer.createTransport(mg(credentials.mgAuth));
 
-app.post('/e-mail', function(req, res) {
+app.post('/v1/e-mail', function(req, res) {
   nodemailerMailgun.sendMail({
     from: '"'+ req.body.fullName +'" <' + req.body.email + '>',
     to: 'frederick.mfinanga@gmail.com', 

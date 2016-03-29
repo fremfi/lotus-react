@@ -24,7 +24,7 @@ class Contact extends React.Component{
 
   _submitMsg() {
     $.ajax({
-      url : "/e-mail",
+      url : "/v1/e-mail",
       type: "POST",
       data : JSON.stringify(this.state),
       contentType: 'application/json',

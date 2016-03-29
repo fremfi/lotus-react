@@ -3,16 +3,16 @@ var Webpack = require('webpack');
 var buildPath = path.resolve(__dirname, 'public', 'build');
 var mainPath = path.resolve(__dirname, 'app', 'main.jsx');
 
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
-	context: path.resolve('src'),
 	entry: [
 		mainPath
 	],
 	output: {
 		path: buildPath,
-		publicPath: '/public/',
-		filename: 'bundle.js'
+		filename: 'main.js'
 	},
 	module: {
 		loaders: [
@@ -39,6 +39,10 @@ module.exports = {
 		]
 	},
 	devtool: 'source-map',
+
+	plugins: [
+	    new HtmlWebpackPlugin({filename: '../index.html', template: 'app/index.html', chunksSortMode: 'none'})
+  	],
 
 	resolve: {
 		extensions: ['', '.js', '.jsx', '.es6']

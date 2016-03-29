@@ -3,18 +3,26 @@ var Webpack = require('webpack');
 var buildPath = path.resolve(__dirname, 'public', 'build');
 var mainPath = path.resolve(__dirname, 'app', 'main.jsx');
 
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+/**
+ * Webpack Constants
+ */
+const METADATA = {
+  host: process.env.HOST || 'localhost',
+  port: process.env.PORT || 3000,
+}
+
 
 module.exports = {
-	context: path.resolve('src'),
-	entry: [
-		'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
-		'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-		mainPath// Appʼs entry point
-	],
+	entry: {
+		'webpack-dev-server': 'webpack-dev-server/client?http://localhost:3000', // WebpackDevServer host and port
+		'webpack-hot-reload': 'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
+		'main': mainPath// Appʼs entry point
+	},
 	output: {
 		path: buildPath,
-		publicPath: '/build/',
-		filename: 'bundle.js'
+		filename: '[name].bundle.js'
 	},
 	module: {
 		// preLoaders: [
@@ -49,9 +57,18 @@ module.exports = {
 	},
 	plugins: [
 	    new Webpack.HotModuleReplacementPlugin(),
-	    new Webpack.NoErrorsPlugin()
+	    new Webpack.NoErrorsPlugin(),
+	    new HtmlWebpackPlugin({filename: '../index.html', template: './app/index.html', chunksSortMode: 'none'}),
   	],
 	devtool: 'eval',
+
+	devServer: {
+		port: METADATA.port,
+    	host: METADATA.host,
+	    proxy: {
+	      '/v1/*' : 'http://localhost:8080',
+	    }
+  	},
 
 	resolve: {
 		extensions: ['', '.js', '.jsx', '.es6']

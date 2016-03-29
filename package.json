@@ -4,8 +4,10 @@
   "description": "frederick mfinanga's personal website",
   "main": "server.js",
   "scripts": {
+    "clean:public": "./node_modules/.bin/rimraf public",
     "postinstall": "webpack --config ./webpack-prod.config.js --progress --colors",
-    "start": "node server"
+    "server:dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base app/",
+    "start": "npm run server:dev & node server"
   },
   "author": "frederick mfinanga",
   "license": "MIT",
@@ -18,6 +20,7 @@
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.14.0",
     "jshint": "^2.9.1",
     "jshint-loader": "^0.8.3",
     "node-libs-browser": "^1.0.0",
@@ -25,6 +28,7 @@
     "nodemailer": "^2.3.0",
     "nodemailer-mailgun-transport": "^1.0.1",
     "react-hot-loader": "^1.3.0",
+    "rimraf": "^2.5.2",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
