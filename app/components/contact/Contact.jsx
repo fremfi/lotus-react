@@ -41,7 +41,7 @@ class Contact extends React.Component{
 		return (
 			<div>
         <div className="row">
-          <h3 className="text-center">Say hi</h3>
+          <h3 className="text-center">Get In Touch</h3>
           <div className="col s12">
     				<div className="row">
           			<div className="input-field col s6">
