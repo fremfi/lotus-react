@@ -4,6 +4,7 @@ var buildPath = path.resolve(__dirname, 'public', 'build');
 var mainPath = path.resolve(__dirname, 'app', 'main.jsx');
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -41,7 +42,8 @@ module.exports = {
 	devtool: 'source-map',
 
 	plugins: [
-	    new HtmlWebpackPlugin({filename: '../index.html', template: 'app/index.html', chunksSortMode: 'none'})
+	    new HtmlWebpackPlugin({filename: '../index.html', template: 'app/index.html', chunksSortMode: 'none'}),
+	    new CopyWebpackPlugin([{from: 'app/assets', to: 'assets'}]),
   	],
 
 	resolve: {
