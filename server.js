@@ -34,7 +34,7 @@ var auth = {
 };
 var nodemailerMailgun = nodemailer.createTransport(mg(credentials.mgAuth));
 
-app.post('/v1/e-mail', function(req, res) {
+app.post('/v1/contact-us', function(req, res) {
   nodemailerMailgun.sendMail({
     from: '"'+ req.body.fullName +'" <' + req.body.email + '>',
     to: 'frederick.mfinanga@gmail.com', 
