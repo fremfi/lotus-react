@@ -43,7 +43,7 @@ module.exports = {
 
 	plugins: [
 	    new HtmlWebpackPlugin({filename: '../index.html', template: 'app/index.html', chunksSortMode: 'none'}),
-	    new CopyWebpackPlugin([{from: 'app/assets', to: 'assets'}]),
+	    new CopyWebpackPlugin([{from: 'app/assets', to: '../assets'}]),
   	],
 
 	resolve: {
