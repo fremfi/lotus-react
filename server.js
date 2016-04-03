@@ -16,10 +16,6 @@ if (isProduction) {
   });
 }
 
-app.get('/v1/test', function (req, res) {
-  res.send('back-end works');
-});
-
 app.use(bodyParser.json()); // for parsing application/json
 
 //Sending Emails
