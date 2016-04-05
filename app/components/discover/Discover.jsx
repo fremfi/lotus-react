@@ -18,7 +18,6 @@ class Discover extends React.Component{
 	render() {
 		return (
 			<div className="grid">
-          		<h2 className="text-center">Coming Soon</h2>
 			</div>
 		);
 	}

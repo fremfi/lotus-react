@@ -9,8 +9,8 @@ import Discover from './components/discover/Discover';
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-    	<IndexRoute component={Contact}></IndexRoute>
-    	<Route path="about" component={About}></Route>
+    	<IndexRoute component={About}></IndexRoute>
+    	<Route path="contact" component={Contact}></Route>
     	<Route path="discover" component={Discover}></Route>
     </Route>
   </Router>

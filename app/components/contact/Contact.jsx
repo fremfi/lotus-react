@@ -40,8 +40,8 @@ class Contact extends React.Component{
 	render() {
 		return (
 			<div>
-        <div className="row">
-          <h3 className="text-center">Get In Touch</h3>
+        <h2>GET IN TOUCH</h2>
+        <div className="row contact-form">
           <div className="col s12">
     				<div className="row">
           			<div className="input-field col s6">

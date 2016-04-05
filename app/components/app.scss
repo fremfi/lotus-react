@@ -1,8 +1,11 @@
-h3 {
-	font-weight: 200;
+nav {
+	box-shadow: none;
+
+	ul a {
+		color: black;
+	}
 }
 
-.text-center {
-	text-align: center;
+nav a.active {
+	background-color: rgba(0,0,0,0.1);
 }
-
