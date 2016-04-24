@@ -10,10 +10,9 @@ class About extends React.Component{
 			<div>
 				<h2>ABOUT ME</h2>
 				<p>
-	      			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia omnis suscipit recusandae molestiae, 
-	      			rem ipsum quia explicabo ea voluptates sequi pariatur asperiores aliquid tempore provident in corporis, 
-	      			itaque, exercitationem, quasi.
-	      		</p>
+	      	Frederick is an advocate for good design with an eye for details. He enjoys getting his hands dirty with front end technologies, creating beautiful experiences online, and reading books on human psychology, design & business. 
+	      	When Frederick is not punching out code, he is out taking photos of beautiful models, playing basketball, exercising, meditating or out and about socializing and building communities.	
+	      </p>
 				<div className="row">
 			      	<div className="col s4">
 			      		<h5>PHOTOGRAPHY</h5>
