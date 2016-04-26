@@ -14,7 +14,7 @@ class About extends React.Component{
 			      	When Frederick is not punching out code, he is out taking photos of beautiful models, playing basketball, exercising, meditating or out and about socializing and building communities.
 	      		</p>
 				<div className="row">
-			      	<div className="col s4">
+			      	<div className="col m12 l6">
 			      		<h5>PHOTOGRAPHY</h5>
 			      		<p>
 			      			Photography is an outlet where Frederick uses the fundamental elements of design to capture scenes
@@ -24,17 +24,11 @@ class About extends React.Component{
 			      			international publications.
 			      		</p>
 			      	</div>
-			      	<div className="col s4">
-			      		<h5>DESIGN</h5>
+			      	<div className="col m12 l6">
+			      		<h5>DESIGN & DEVELOPMENT</h5>
 			      		<p>
 			      			Frederick Mfinanga creates top-notch graphic designs adhering to UX best practices and by studying results
-			      			with measurable analytics.
-			      		</p>
-			      	</div>
-			      	<div className="col s4">
-			      		<h5>DEVELOPER</h5>
-			      		<p>
-			      			No user is left behind. Fredericks websites work across all devices. Each is optimally designed for desktop, tablet, and mobile.
+			      			with measurable analytics. No user is left behind. Fredericks websites work across all devices. Each is optimally designed for desktop, tablet, and mobile.
 			      		</p>
 			      	</div>
 			    </div>
