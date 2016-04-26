@@ -1,0 +1,11 @@
+nav {
+	box-shadow: none;
+
+	ul a {
+		color: black;
+	}
+}
+
+nav a.active {
+	background-color: rgba(0,0,0,0.1);
+}

@@ -1,11 +1,4 @@
-nav {
-	box-shadow: none;
-
-	ul a {
-		color: black;
-	}
-}
-
-nav a.active {
-	background-color: rgba(0,0,0,0.1);
-}
+@import './nav/nav';
+@import './about/about';
+@import './discover/discover';
+@import './contact/contact';

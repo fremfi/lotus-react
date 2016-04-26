@@ -39,17 +39,16 @@
   "dependencies": {
     "express": "^4.13.4",
     "jquery": "^2.2.2",
-    "masonry-layout": "^4.0.0",
     "materialize-css": "^0.97.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-masonry-component": "^4.0.0",
+    "react-masonry-component": "^4.0.2",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
     "redux": "^3.3.1"
   },
   "engines": {
-        "node": "5.6.0",
-        "npm": "3.6.0"
-    }
+    "node": "5.6.0",
+    "npm": "3.6.0"
+  }
 }
