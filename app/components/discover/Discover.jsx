@@ -4,7 +4,12 @@ import Masonry from 'react-masonry-component';
 class Discover extends React.Component{
 	constructor() {
 		super();
-		this.state = { images: [1,2,3,4] };
+		this.state = {
+			gallery: {
+				hasMoreImages: true,
+				images: []
+			}
+		};
 	}
 
 	componentDidMount() {
@@ -15,30 +20,54 @@ class Discover extends React.Component{
     	window.removeEventListener('scroll', this.handleScroll.bind(this));
 	}
 
-	//TODO: append 10 new images onscroll towards the end
-	//stop appending when all images are loaded, return false?
-	handleScroll() {
-		this.setState({ images: [1,2,3,4,5,6,7,8,9,10,11,12,13,14] });
+	componentWillMount() {
+		this.loadMoreImages();
 	}
 
-	//TODO: get images dynamically?
+	handleScroll() {
+		var visibleHeight = window.innerHeight;
+		var hiddenContentHeight = document.body.scrollHeight - visibleHeight;
+		if ((hiddenContentHeight - document.body.scrollTop) < 100) {
+			if (this.state.gallery.hasMoreImages) {
+				this.loadMoreImages();
+			}
+		}
+	}
+
+	loadMoreImages() {
+		$.ajax({
+		  	url : "/api/images",
+		  	type: "GET",
+		  	success: function(data) {
+		  		//TODO: structure backend to return hasMoreImages
+				this.setState({
+					gallery: {
+						hasMoreImages: true,
+						images: data
+					}
+				});
+		  	}.bind(this),
+		  	error: function (error) {
+		    	//TODO: respond to error
+		  	}
+		});
+	}
+
+	//TODO:
 	//Images used below are simply for testing purpose &
 	//will be replaced by fjmva photography
-	//key is image name which will be unique
 	render() {
-		var imageElements = this.state.images.map(function(image){
+		var imageElements = this.state.gallery.images.map(function(image){
 			return (
 				<img key={image} className='grid-item'
-					src={'../.././assets/images/discover/' + image + '.jpg'}/>
+					src={'../.././assets/images/discover/' + image}/>
 		   	);
 		});
 		return (
-			<div>
-				<Masonry
-	               className={'discover-grid'}>
-	               {imageElements}
-	           </Masonry>
-           </div>
+			<Masonry
+               className={'discover-grid'}>
+               {imageElements}
+           </Masonry>
 		);
 	}
 }

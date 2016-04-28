@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var fs = require("fs");
 var path = require('path');
 var http = require('http');
 var app = express();
@@ -18,6 +19,19 @@ if (isProduction) {
 
 app.use(bodyParser.json()); // for parsing application/json
 
+//Getting Images (Discover)
+var photographs = [];
+fs.readdir('./app/assets/images/discover', function (err, files) {
+    if (err) {
+        throw err;
+    }
+    photographs = files;
+});
+
+app.get('/api/images', function(req, res){
+  res.send(photographs);
+});
+
 //Sending Emails
 var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
@@ -30,10 +44,10 @@ var auth = {
 };
 var nodemailerMailgun = nodemailer.createTransport(mg(credentials.mgAuth));
 
-app.post('/v1/contact-us', function(req, res) {
+app.post('/api/contact-us', function(req, res) {
   nodemailerMailgun.sendMail({
     from: '"'+ req.body.fullName +'" <' + req.body.email + '>',
-    to: 'frederick.mfinanga@gmail.com', 
+    to: 'frederick.mfinanga@gmail.com',
     subject: 'FJMVA: Your services are needed',
     text: req.body.msg
   }, function (err, info) {
