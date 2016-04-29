@@ -4,8 +4,10 @@ import Masonry from 'react-masonry-component';
 class Discover extends React.Component{
 	constructor() {
 		super();
+		this.isLoading = false;
 		this.state = {
 			gallery: {
+				lastLoadedPage: 0,
 				hasMoreImages: true,
 				images: []
 			}
@@ -14,38 +16,39 @@ class Discover extends React.Component{
 
 	componentDidMount() {
     	window.addEventListener('scroll', this.handleScroll.bind(this));
+    	//Initialize: Get the first page of images
+    	this.loadMoreImages(this.state.gallery.lastLoadedPage);
 	}
 
 	componentWillUnmount() {
     	window.removeEventListener('scroll', this.handleScroll.bind(this));
 	}
 
-	componentWillMount() {
-		this.loadMoreImages();
-	}
-
 	handleScroll() {
 		var visibleHeight = window.innerHeight;
 		var hiddenContentHeight = document.body.scrollHeight - visibleHeight;
 		if ((hiddenContentHeight - document.body.scrollTop) < 100) {
-			if (this.state.gallery.hasMoreImages) {
-				this.loadMoreImages();
+			if (this.state.gallery.hasMoreImages && !this.isLoading) {
+				this.loadMoreImages(this.state.gallery.lastLoadedPage);
 			}
 		}
 	}
 
-	loadMoreImages() {
+	loadMoreImages(page) {
+		this.isLoading = true;
 		$.ajax({
-		  	url : "/api/images",
-		  	type: "GET",
-		  	success: function(data) {
-		  		//TODO: structure backend to return hasMoreImages
-				this.setState({
-					gallery: {
-						hasMoreImages: true,
-						images: data
-					}
-				});
+		  	url : '/api/images',
+		  	type: 'GET',
+		  	data: { 'page': page },
+		  	success: function(response) {
+					this.setState({
+						gallery: {
+							lastLoadedPage: this.state.gallery.lastLoadedPage + 1,
+							hasMoreImages: response.hasMoreImages,
+							images: this.state.gallery.images.concat(response.data)
+						}
+					});
+					this.isLoading = false;
 		  	}.bind(this),
 		  	error: function (error) {
 		    	//TODO: respond to error
@@ -59,15 +62,15 @@ class Discover extends React.Component{
 	render() {
 		var imageElements = this.state.gallery.images.map(function(image){
 			return (
-				<img key={image} className='grid-item'
-					src={'../.././assets/images/discover/' + image}/>
+				<img className='grid-item'
+					key={image} src={'../.././assets/images/discover/' + image}/>
 		   	);
 		});
 		return (
 			<Masonry
-               className={'discover-grid'}>
-               {imageElements}
-           </Masonry>
+	    	className={'discover-grid'}>
+	    	{imageElements}
+      </Masonry>
 		);
 	}
 }

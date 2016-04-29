@@ -29,7 +29,15 @@ fs.readdir('./app/assets/images/discover', function (err, files) {
 });
 
 app.get('/api/images', function(req, res){
-  res.send(photographs);
+  if (req.query.page) {
+    var pagedPhotographs = photographs.slice((req.query.page * 10), ((req.query.page * 10) + 10));
+    if (pagedPhotographs.length < 10) {
+      res.send({ hasMoreImages: false, data: pagedPhotographs });
+    }
+    else {
+      res.send({ hasMoreImages: true, data: pagedPhotographs });
+    }
+  }
 });
 
 //Sending Emails
