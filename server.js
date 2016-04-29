@@ -38,6 +38,9 @@ app.get('/api/images', function(req, res){
       res.send({ hasMoreImages: true, data: pagedPhotographs });
     }
   }
+  else {
+    res.send({ hasMoreImages: false, data: photographs });
+  }
 });
 
 //Sending Emails
