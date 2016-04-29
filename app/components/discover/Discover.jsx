@@ -69,7 +69,7 @@ class Discover extends React.Component{
 		return (
 			<Masonry
 	    	className={ 'discover-grid' }
-	    	options={ { transitionDuration: '1s' } }>
+	    	options={ { transitionDuration: '0.5s' } }>
 	    	{imageElements}
       </Masonry>
 		);

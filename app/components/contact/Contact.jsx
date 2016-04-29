@@ -4,7 +4,7 @@ class Contact extends React.Component{
 	constructor() {
 		super();
     this.state = {
-      fullName: '',
+      fullName: undefined,
       email: '',
       msg: ''
     };
@@ -29,8 +29,13 @@ class Contact extends React.Component{
       data : JSON.stringify(this.state),
       contentType: 'application/json',
       success: function(data) {
-          //TODO: display success
-      },
+        //TODO: display success
+        this.setState({
+          fullName: undefined,
+          email: '',
+          msg: ''
+        });
+      }.bind(this),
       error: function (error) {
         //TODO: respond to error
       }
@@ -42,19 +47,19 @@ class Contact extends React.Component{
 			<div>
         <h4>GET IN TOUCH</h4>
         <div className="row">
-          <div className="col m12 l8">
+          <div className="col m12 l6">
             <div className="row contact-form">
               <div className="col s12">
         				<div className="row">
-              			<div className="input-field col s6">
+              			<div className="input-field col s12">
                 				<input id="full_name"
                           type="text"
                           className="validate"
                           value={this.state.fullName}
                           onChange={this._handleFullNameChange.bind(this)}/>
-                				<label htmlFor="full_name">Full Name</label>
+                				<label htmlFor="full_name">Name</label>
               			</div>
-              			<div className="input-field col s6">
+              			<div className="input-field col s12">
                 				<input id="email"
                           type="email"
                           className="validate"
@@ -87,14 +92,11 @@ class Contact extends React.Component{
               </div>
             </div>
           </div>
-          <div className="col m12 offset-l1 l3">
+          <div className="col m12 offset-l1 l5">
             <div>
+              <p>Do you have a question or comment? Please feel free to send me an email or fill in this handy contact form. My aim is to reply within 24 hours.</p>
               <i className="small material-icons contact-location-icon">location_on</i>
               <span><b>Montreal, QC</b></span>
-            </div>
-            <div>
-              <i className="small material-icons contact-phone-icon">phone</i>
-              <span><b><a className="phone-link" href="tel:+1-514-649-6566">+1-514-649-6566</a></b></span>
             </div>
             <div>
               <i className="small material-icons contact-email-icon">email</i>
