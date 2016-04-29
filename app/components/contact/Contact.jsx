@@ -4,7 +4,7 @@ class Contact extends React.Component{
 	constructor() {
 		super();
     this.state = {
-      fullName: undefined,
+      fullName: '',
       email: '',
       msg: ''
     };
@@ -23,6 +23,9 @@ class Contact extends React.Component{
   }
 
   _submitMsg() {
+    //TODO: Only post email if there's if email is valid and
+    //message is not empty
+    //Give feedback to the user
     $.ajax({
       url : "/api/contact-us",
       type: "POST",
@@ -31,7 +34,7 @@ class Contact extends React.Component{
       success: function(data) {
         //TODO: display success
         this.setState({
-          fullName: undefined,
+          fullName: '',
           email: '',
           msg: ''
         });
