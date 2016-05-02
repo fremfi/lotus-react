@@ -47,11 +47,10 @@ class Contact extends React.Component{
 
 	render() {
 		return (
-			<div>
-        <h4>GET IN TOUCH</h4>
+			<div className="contact-content">
         <div className="row">
           <div className="col m12 l6">
-            <div className="row contact-form">
+            <div className="row">
               <div className="col s12">
         				<div className="row">
               			<div className="input-field col s12">

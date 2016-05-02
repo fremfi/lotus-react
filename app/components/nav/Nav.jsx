@@ -17,13 +17,15 @@ class Nav extends React.Component{
 	          		<a href="#" className="brand-logo"></a>
 	          		<a href="#" data-activates="nav-mobile" className="button-collapse"><i className="material-icons">menu</i></a>
 	          		<ul className="right hide-on-med-and-down">
-	          			<li><Link to="discover" activeClassName="active">DISCOVER</Link></li>
 	            		<li><IndexLink to="/" activeClassName="active">ABOUT</IndexLink></li>
+	          			<li><Link to="blog" activeClassName="active">BLOG</Link></li>
+	          			<li><Link to="discover" activeClassName="active">DISCOVER</Link></li>
 	            		<li><Link to="contact" activeClassName="active">CONTACT</Link></li>
 	          		</ul>
 	          		<ul className="side-nav" id="nav-mobile">
-        					<li><Link to="discover" activeClassName="active">DISCOVER</Link></li>
         		  		<li><IndexLink to="/" activeClassName="active">ABOUT</IndexLink></li>
+	          			<li><Link to="blog" activeClassName="active">BLOG</Link></li>
+        					<li><Link to="discover" activeClassName="active">DISCOVER</Link></li>
         		  		<li><Link to="contact" activeClassName="active">CONTACT</Link></li>
 	          		 </ul>
 	        	</div>

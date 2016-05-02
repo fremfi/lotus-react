@@ -67,11 +67,13 @@ class Discover extends React.Component{
 		   	);
 		});
 		return (
-			<Masonry
-	    	className={ 'discover-grid' }
-	    	options={ { transitionDuration: '1s' } }>
-	    	{imageElements}
-      </Masonry>
+			<div>
+				<Masonry
+		    	className={ 'discover-grid' }
+		    	options={ { transitionDuration: '2s' } }>
+		    	{imageElements}
+      	</Masonry>
+      </div>
 		);
 	}
 }
