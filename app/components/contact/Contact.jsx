@@ -105,12 +105,6 @@ class Contact extends React.Component{
               <span><b><a className="email-link" href="mailto:frederick.mfinanga@gmail.com">frederick.mfinanga@gmail.com</a></b></span>
             </div>
             <hr/>
-            <ul className="social-media-icons">
-              <li><a href="http://www.facebook.com/fjmva"><i className="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a></li>
-              <li><a href="http://www.twitter.com/fjmva"><i className="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a></li>
-              <li><a href="http://www.instagram.com/fjmva"><i className="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
-              <li><a href="https://ca.linkedin.com/in/frederickmfinanga"><i className="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a></li>
-            </ul>
           </div>
         </div>
 			</div>
