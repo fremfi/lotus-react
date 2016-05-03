@@ -1,7 +1,7 @@
 var path = require('path');
 var Webpack = require('webpack');
 var buildPath = path.resolve(__dirname, 'public', 'build');
-var mainPath = path.resolve(__dirname, 'app', 'main.jsx');
+var mainPath = path.resolve(__dirname, 'client', 'main.jsx');
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -59,8 +59,8 @@ module.exports = {
 	plugins: [
 	    new Webpack.HotModuleReplacementPlugin(),
 	    new Webpack.NoErrorsPlugin(),
-	    new HtmlWebpackPlugin({filename: '../index.html', template: './app/index.html', chunksSortMode: 'none'}),
-	    new CopyWebpackPlugin([{from: 'app/assets', to: '../assets'}])
+	    new HtmlWebpackPlugin({filename: '../index.html', template: './client/index.html', chunksSortMode: 'none'}),
+	    new CopyWebpackPlugin([{from: 'client/assets', to: '../assets'}])
   	],
 	devtool: 'eval',
 

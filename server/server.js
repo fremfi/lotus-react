@@ -21,7 +21,7 @@ app.use(bodyParser.json()); // for parsing application/json
 
 //Getting Images (Discover)
 var photographs = [];
-fs.readdir('./app/assets/images/discover', function (err, files) {
+fs.readdir('./client/assets/images/discover', function (err, files) {
     if (err) {
         throw err;
     }
