@@ -65,12 +65,13 @@ module.exports = {
 	devtool: 'eval',
 
 	devServer: {
+		outputPath: buildPath,
 		port: METADATA.port,
-    	host: METADATA.host,
-	    proxy: {
-	      '/api/*' : 'http://localhost:8080',
-	    }
-  	},
+    host: METADATA.host,
+    proxy: {
+      '/api/*' : 'http://localhost:8080',
+    }
+  },
 
 	resolve: {
 		extensions: ['', '.js', '.jsx', '.es6']
