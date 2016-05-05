@@ -63,7 +63,7 @@ class Discover extends React.Component{
 		var imageElements = this.state.gallery.images.map(function(image){
 			return (
 				<img className='grid-item'
-					key={image} src={'../../client/assets/images/discover/' + image}/>
+					key={image} src={'../assets/images/discover/' + image}/>
 		   	);
 		});
 		return (
