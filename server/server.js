@@ -6,7 +6,7 @@ var http = require('http');
 var app = express();
 var isProduction = process.env.NODE_ENV === 'production';
 var port = isProduction ? process.env.PORT : 8080;
-var publicPath = path.join(__dirname, 'public');
+var publicPath = path.join(__dirname, '../public');
 
 if (isProduction) {
   app.use(express.static(publicPath));
