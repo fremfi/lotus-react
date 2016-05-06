@@ -1,4 +1,5 @@
 import React from 'react';
+import Toastr from 'toastr';
 
 class Contact extends React.Component{
 	constructor() {
@@ -23,7 +24,7 @@ class Contact extends React.Component{
   }
 
   _submitMsg() {
-    //TODO: Only post email if there's if email is valid and
+    //TODO: Only post email if the email is valid and
     //message is not empty
     //Give feedback to the user
     $.ajax({
@@ -32,12 +33,15 @@ class Contact extends React.Component{
       data : JSON.stringify(this.state),
       contentType: 'application/json',
       success: function(data) {
+        console.log(data);
         //TODO: display success
         this.setState({
           fullName: '',
           email: '',
           message: ''
         });
+        //Success Message
+        Toastr.success('Message Sent!');
       }.bind(this),
       error: function (error) {
         //TODO: respond to error

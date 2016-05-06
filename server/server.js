@@ -64,12 +64,13 @@ app.post('/api/contact-us', function(req, res) {
   }, function (err, info) {
     if (err) {
       console.log('Error sending email: ' + err);
+      res.status(400).send('Invalid e-mail credentials');
     }
     else {
       console.log('Success sending email: ' + JSON.stringify(info));
+      res.send(req.body);
     }
   });
-  res.send(req.body);
 });
 
 var server = http.createServer(app).listen(port, function() {
