@@ -4,8 +4,8 @@ import React from 'react';
 import Nav from './partials/nav/Nav';
 
 class App extends React.Component{
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 	}
 
 	render() {

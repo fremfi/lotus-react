@@ -60,7 +60,7 @@ app.post('/api/contact-us', function(req, res) {
     from: '"'+ req.body.fullName +'" <' + req.body.email + '>',
     to: 'frederick.mfinanga@gmail.com',
     subject: 'FJMVA: Your services are needed',
-    text: req.body.msg
+    text: req.body.message
   }, function (err, info) {
     if (err) {
       console.log('Error sending email: ' + err);

@@ -8,7 +8,6 @@ const initialState = {
 
 export default function discoverReducers(state = initialState, action) {
 	switch (action.type) {
-		//TODO: Follow up on async actions with redux
 		case 'LOAD_MORE_IMAGES':
 			return Object.assign({}, state, {
 			  			gallery: {

@@ -5,8 +5,9 @@ import App from '../components/app';
 import Contact from '../components/pages/contact/Contact';
 import About from '../components/pages/about/About';
 import Discover from '../components/pages/discover/Discover';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import * as reducers from '../redux/reducers';
 
@@ -14,7 +15,8 @@ const store = createStore(
   combineReducers({
     ...reducers,
     routing: routerReducer
-  })
+  }),
+  applyMiddleware(thunkMiddleware)
 );
 const history = syncHistoryWithStore(hashHistory, store);
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import Masonry from 'react-masonry-component';
 import { connect } from 'react-redux';
-import { loadMoreImages } from '../../../redux/actions';
+import { fetchImages } from '../../../redux/actions';
 
 class Discover extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.isLoading = false;
 	}
 
@@ -29,27 +29,16 @@ class Discover extends React.Component {
 		}
 	}
 
-	//TODO: Follow up on async actions with redux
 	loadMoreImages(page) {
 		this.isLoading = true;
-		$.ajax({
-		  	url : '/api/images',
-		  	type: 'GET',
-		  	data: { 'page': page },
-		  	success: function(response) {
-				this.props.loadMoreImages(response);
-				this.isLoading = false;
-		  	}.bind(this),
-		  	error: function (error) {
-		    	//TODO: respond to error
-		  	}
-		});
+		this.props.fetchImages(page);
 	}
 
 	//TODO:
 	//Images used below are simply for testing purpose &
 	//will be replaced by fjmva photography
 	render() {
+		this.isLoading = false;
 		var imageElements = this.props.gallery.images.map(function(image){
 			return (
 				<img className='grid-item'
@@ -69,4 +58,18 @@ class Discover extends React.Component {
 
 }
 
-export default connect(state => ({gallery: state.default.gallery}), { loadMoreImages })(Discover)
+function mapStateToProps(state) {
+	return {
+		gallery: state.default.gallery
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchImages: function (page) {
+      return dispatch(fetchImages(page));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Discover)

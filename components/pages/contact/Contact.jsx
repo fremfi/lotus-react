@@ -6,7 +6,7 @@ class Contact extends React.Component{
     this.state = {
       fullName: '',
       email: '',
-      msg: ''
+      message: ''
     };
 	}
 
@@ -19,7 +19,7 @@ class Contact extends React.Component{
   }
 
   _handleMessageChange(e) {
-    this.setState({msg: e.target.value});
+    this.setState({message: e.target.value});
   }
 
   _submitMsg() {
@@ -36,7 +36,7 @@ class Contact extends React.Component{
         this.setState({
           fullName: '',
           email: '',
-          msg: ''
+          message: ''
         });
       }.bind(this),
       error: function (error) {
@@ -76,7 +76,7 @@ class Contact extends React.Component{
                						<div className="input-field col s12">
                   						<textarea id="contactTextArea"
                                 className="materialize-textarea"
-                                value={this.state.msg}
+                                value={this.state.message}
                                 onChange={this._handleMessageChange.bind(this)}>
                               </textarea>
                   						<label htmlFor="contactTextArea">Message</label>
