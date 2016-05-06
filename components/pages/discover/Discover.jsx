@@ -1,23 +1,18 @@
 import React from 'react';
 import Masonry from 'react-masonry-component';
+import { connect } from 'react-redux';
+import { loadMoreImages } from '../../../redux/actions';
 
-class Discover extends React.Component{
+class Discover extends React.Component {
 	constructor() {
 		super();
 		this.isLoading = false;
-		this.state = {
-			gallery: {
-				lastLoadedPage: 0,
-				hasMoreImages: true,
-				images: []
-			}
-		};
 	}
 
 	componentDidMount() {
     	window.addEventListener('scroll', this.handleScroll.bind(this));
     	//Initialize: Get the first page of images
-    	this.loadMoreImages(this.state.gallery.lastLoadedPage);
+    	this.loadMoreImages(this.props.gallery.lastLoadedPage);
 	}
 
 	componentWillUnmount() {
@@ -28,12 +23,13 @@ class Discover extends React.Component{
 		var visibleHeight = window.innerHeight;
 		var hiddenContentHeight = document.body.scrollHeight - visibleHeight;
 		if ((hiddenContentHeight - document.body.scrollTop) < 100) {
-			if (this.state.gallery.hasMoreImages && !this.isLoading) {
-				this.loadMoreImages(this.state.gallery.lastLoadedPage);
+			if (this.props.gallery.hasMoreImages && !this.isLoading) {
+				this.loadMoreImages(this.props.gallery.lastLoadedPage);
 			}
 		}
 	}
 
+	//TODO: Follow up on async actions with redux
 	loadMoreImages(page) {
 		this.isLoading = true;
 		$.ajax({
@@ -41,14 +37,8 @@ class Discover extends React.Component{
 		  	type: 'GET',
 		  	data: { 'page': page },
 		  	success: function(response) {
-					this.setState({
-						gallery: {
-							lastLoadedPage: this.state.gallery.lastLoadedPage + 1,
-							hasMoreImages: response.hasMoreImages,
-							images: this.state.gallery.images.concat(response.data)
-						}
-					});
-					this.isLoading = false;
+				this.props.loadMoreImages(response);
+				this.isLoading = false;
 		  	}.bind(this),
 		  	error: function (error) {
 		    	//TODO: respond to error
@@ -60,7 +50,7 @@ class Discover extends React.Component{
 	//Images used below are simply for testing purpose &
 	//will be replaced by fjmva photography
 	render() {
-		var imageElements = this.state.gallery.images.map(function(image){
+		var imageElements = this.props.gallery.images.map(function(image){
 			return (
 				<img className='grid-item'
 					key={image} src={'../assets/images/discover/' + image}/>
@@ -69,13 +59,14 @@ class Discover extends React.Component{
 		return (
 			<div>
 				<Masonry
-		    	className={ 'discover-grid' }
-		    	options={ { transitionDuration: '2s' } }>
-		    	{imageElements}
-      	</Masonry>
-      </div>
+			    	className={ 'discover-grid' }
+			    	options={ { transitionDuration: '2s' } }>
+			    	{imageElements}
+      			</Masonry>
+      		</div>
 		);
 	}
+
 }
 
-export default Discover;
+export default connect(state => ({gallery: state.default.gallery}), { loadMoreImages })(Discover)
