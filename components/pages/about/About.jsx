@@ -23,7 +23,7 @@ class About extends React.Component{
 					  	exercising, meditating or out and about travelling to exotic places,
 					  	socializing and building communities.
 					  </p>
-					  <a className="waves-effect waves-light btn-large" href="#/contact">GET IN TOUCH</a>
+					  <a className="waves-effect waves-light btn-large green lighten-1" href="#/contact">GET IN TOUCH</a>
 			  	</div>
 			  </div>
 			</div>

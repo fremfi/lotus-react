@@ -88,7 +88,7 @@ class Contact extends React.Component{
               					</div>
         				    </form>
         				</div>
-        				<button className="btn waves-effect waves-light"
+        				<button className="btn waves-effect waves-light green lighten-1"
                   type="submit"
                   name="action"
                   onClick={this._submitMsg.bind(this)}>

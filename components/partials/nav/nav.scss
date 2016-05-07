@@ -4,8 +4,17 @@ nav {
 	ul a {
 		color: black;
 	}
+
+  ul a:hover {
+    background-color: #81c784;
+  }
 }
 
 nav a.active {
-	background-color: rgba(0,0,0,0.1);
+	background-color: #81c784;
+  color: white;
+}
+
+.nav-wrapper > ul.right {
+  margin-right: 15%;
 }

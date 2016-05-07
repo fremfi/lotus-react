@@ -13,7 +13,7 @@ class Nav extends React.Component{
 	render() {
 		return (
 		    <nav>
-	        	<div className="nav-wrapper teal lighten-4">
+	        	<div className="nav-wrapper green lighten-5">
 	          		<a href="#" className="brand-logo"></a>
 	          		<a href="#" data-activates="nav-mobile" className="button-collapse"><i className="material-icons">menu</i></a>
 	          		<ul className="right hide-on-med-and-down">
