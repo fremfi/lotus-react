@@ -38,6 +38,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "cosmicjs": "^2.1.2",
     "express": "^4.13.4",
     "jquery": "^2.2.2",
     "materialize-css": "^0.97.5",
