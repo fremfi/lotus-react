@@ -5,6 +5,7 @@ import App from '../components/app';
 import Contact from '../components/pages/contact/Contact';
 import About from '../components/pages/about/About';
 import Blog from '../components/pages/blog/Blog';
+import BlogDetails from '../components/pages/blog/BlogDetails';
 import Discover from '../components/pages/discover/Discover';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
@@ -27,6 +28,7 @@ ReactDOM.render((
 		    <Route path="/" component={App}>
 		    	<IndexRoute component={About}></IndexRoute>
           <Route path="blog" component={Blog}></Route>
+          <Route path="blog/:slug" component={Blog}></Route>
 		    	<Route path="contact" component={Contact}></Route>
 		    	<Route path="discover" component={Discover}></Route>
 		    </Route>

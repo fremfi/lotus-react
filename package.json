@@ -41,6 +41,7 @@
     "cosmicjs": "^2.1.2",
     "express": "^4.13.4",
     "jquery": "^2.2.2",
+    "lodash": "^4.11.2",
     "materialize-css": "^0.97.5",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
