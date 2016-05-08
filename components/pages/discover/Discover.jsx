@@ -34,9 +34,6 @@ class Discover extends React.Component {
 		this.props.fetchImages(page);
 	}
 
-	//TODO:
-	//Images used below are simply for testing purpose &
-	//will be replaced by fjmva photography
 	render() {
 		this.isLoading = false;
 		var imageElements = this.props.gallery.images.map(function(image){
