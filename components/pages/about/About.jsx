@@ -15,13 +15,13 @@ class About extends React.Component{
 				</div>
 				<div className="col s12">
 					<div className="row">
-					  <div className="col s4 push-s4 profile-title">
+					  <div className="col m4 push-m4 s12 profile-title">
 							<h5>FREDERICK MFINANGA</h5>
 							<h6><i>A software developer based in Montreal, who loves art & design</i></h6>
 						</div>
 					</div>
 					<div className="row">
-					  <div className="col s6 offset-s3">
+					  <div className="col m6 offset-m3 s12">
 						  <p className="profile-details">
 						  	Frederick is an advocate for good design with an eye for details. He enjoys getting his hands dirty with front end
 						  	technologies, creating beautiful experiences online, and reading books on human psychology, design & business.
