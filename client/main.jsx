@@ -23,17 +23,19 @@ const store = createStore(
 const history = syncHistoryWithStore(hashHistory, store);
 
 ReactDOM.render((
-	<Provider store={store}>
-	  	<Router history={history}>
-		    <Route path="/" component={App}>
-		    	<IndexRoute component={About}></IndexRoute>
-          <Route path="blog" component={Blog}></Route>
-          <Route path="blog/:slug" component={Blog}></Route>
-		    	<Route path="contact" component={Contact}></Route>
-		    	<Route path="discover" component={Discover}></Route>
-		    </Route>
-	  	</Router>
-	</Provider>
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path="/" component={App}>
+        <IndexRoute component={About}></IndexRoute>
+        <Route path="blog" component={Blog}>
+          <Route path=":slug" component={Blog}></Route>
+        </Route>
+        <Route path="blog/:slug" component={Blog}></Route>
+        <Route path="contact" component={Contact}></Route>
+        <Route path="discover" component={Discover}></Route>
+      </Route>
+    </Router>
+  </Provider>
 ), document.getElementById('app'));
 
 
