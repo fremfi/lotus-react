@@ -16,7 +16,7 @@ class Blog extends React.Component {
           <div className="col s12">
             <Link to={ '/blog/' + blogPost.slug }><h5 className="blog-post-title">{blogPost.title}</h5></Link>
             <hr className="blog-post-title-seperator"></hr>
-            <div className="blog-post-preview" dangerouslySetInnerHTML={ {__html: blogPost.metafields[0].value} }></div>
+            <div className="blog-post-preview" dangerouslySetInnerHTML={ {__html: blogPost.metafield[blogPost.slug].value} }></div>
             <Link to={ '/blog/' + blogPost.slug }><p className="read-more-link">Read more...</p></Link>
           </div>
         </div>
@@ -26,7 +26,7 @@ class Blog extends React.Component {
       <div>
         {blogPosts}
       </div>
-    );  
+    );
   }
 }
 
