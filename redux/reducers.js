@@ -3,7 +3,8 @@ const initialState = {
 		lastLoadedPage: 0,
 		hasMoreImages: true,
 		images: []
-	}
+	},
+    blogPosts: []
 };
 
 export default function discoverReducers(state = initialState, action) {
@@ -17,6 +18,9 @@ export default function discoverReducers(state = initialState, action) {
 						}
 					});
 			break;
+        case 'LOAD_BLOG_POSTS':
+            return Object.assign({}, state, { blogPosts: action.blogPosts });
+            break;
 		default:
 			return state;
 	}
