@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Cosmic from 'cosmicjs';
 import _ from 'lodash';
-import BlogDetails from './BlogDetails';
+import BlogDetails from './BlogDetails.jsx';
 
 class Blog extends React.Component {
   constructor(props) {

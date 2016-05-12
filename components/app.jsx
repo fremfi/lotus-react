@@ -1,7 +1,7 @@
 import './app.scss';
 import $ from 'jquery';
 import React from 'react';
-import Nav from './partials/nav/Nav';
+import Nav from './partials/nav/Nav.jsx';
 
 class App extends React.Component{
 	constructor(props) {

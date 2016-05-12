@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import _ from 'lodash';
-import BlogDetails from './BlogDetails';
-import BlogList from './BlogList';
+import BlogDetails from './BlogDetails.jsx';
+import BlogList from './BlogList.jsx';
 import { connect } from 'react-redux';
 import { fetchBlogPosts } from '../../../redux/actions';
 
