@@ -3,6 +3,7 @@ var webpack = require('karma-webpack');
 module.exports = function (config) {
   config.set({
     frameworks: [ 'jasmine' ],
+    singleRun: true,
     files: [
       './node_modules/phantomjs-polyfill/bind-polyfill.js',
       'tests/**/*.spec.jsx',

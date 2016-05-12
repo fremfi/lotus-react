@@ -5,5 +5,5 @@ deploy:
 install: npm install
 language: node_js
 node_js: [5.6.0]
-script: node_modules/karma/bin/karma start ./karma.conf.js –single-run
+script: node_modules/karma/bin/karma start ./karma.conf.js
 after_script: cat build/reports/coverage/report-lcov/lcov.info | node_modules/coveralls/bin/coveralls.js && rm -rf build
