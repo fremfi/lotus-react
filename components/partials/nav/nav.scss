@@ -1,20 +1,22 @@
+@import '../../colors';
+
 nav {
 	box-shadow: none;
 
 	ul a {
-		color: black;
+		color: $black;
 	}
 
   ul a:hover {
-    background-color: #81c784;
+    background-color: $primary-lighten-2;
   }
 }
 
 nav a.active {
-	background-color: #81c784;
-  color: white;
+    background-color: $primary-lighten-2;
+    color: $white;
 }
 
 .nav-wrapper > ul.right {
-  margin-right: 15%;
+    margin-right: 15%;
 }

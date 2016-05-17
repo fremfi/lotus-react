@@ -1,3 +1,5 @@
+@import '../../colors';
+
 .contact-phone-icon,
 .contact-email-icon,
 .contact-location-icon {
@@ -11,11 +13,11 @@
 }
 
 .social-media-icons li a {
-	color: black;
+	color: $black;
 }
 
 .email-link {
-	color: green;
+	color: $primary;
 }
 
 .contact-content {

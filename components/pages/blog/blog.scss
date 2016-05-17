@@ -1,9 +1,11 @@
-.blog-post-title {
-  color: #81c784;
+@import '../../colors';
+
+.article-title {
+  color: $primary-lighten-2;
 }
 
-hr.blog-post-title-seperator{
-  background-color: #81c784;
+hr.seperator{
+  background-color: $primary-lighten-2;
   border: 0;
   height: 5px;
   width: 8%;

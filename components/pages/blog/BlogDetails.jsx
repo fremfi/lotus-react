@@ -7,15 +7,15 @@ class BlogDetails extends React.Component {
 
   render() {
     return (
-      <div>
+      <article>
         <div className="row" key={this.props.blogPost.slug}>
           <div className="col s12">
-            <h5 className="blog-post-title">{this.props.blogPost.title}</h5>
-            <hr className="blog-post-title-seperator"></hr>
-            <div className="blog-post-preview" dangerouslySetInnerHTML={ {__html: this.props.blogPost.content} }></div>
+            <h5 className="article-title">{this.props.blogPost.title}</h5>
+            <hr className="seperator"></hr>
+            <div dangerouslySetInnerHTML={ {__html: this.props.blogPost.content} }></div>
           </div>
         </div>
-      </div>
+      </article>
     );
   }
 }
