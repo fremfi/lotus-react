@@ -1,16 +1,27 @@
-var React = require('react');
-var TestUtils = require('react/lib/ReactTestUtils');
-var BlogList = require('../components/pages/blog/BlogList.jsx').default;
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+import BlogList from '../components/blog/BlogList.jsx';
+
+function setup(saving) {
+  let props = {
+    blogPosts: []
+  };
+
+  let renderer = TestUtils.createRenderer();
+  renderer.render(<BlogList {...props}/>);
+  let output = renderer.getRenderOutput();
+
+  return {
+    props,
+    output,
+    renderer
+  };
+}
 
 describe('Blog List', () => {
-    var component;
-
-    beforeEach(() => {
-        component = TestUtils.renderIntoDocument(<BlogList blogPosts={[]}/>);
-    });
-
     it('renders', () => {
-        expect(component).toBeTruthy();
+      const { output } = setup();
+      expect(output).toBeTruthy();
     });
 
 });

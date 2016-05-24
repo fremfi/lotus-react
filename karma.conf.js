@@ -6,11 +6,7 @@ module.exports = function (config) {
     singleRun: true,
     files: [
       './node_modules/phantomjs-polyfill/bind-polyfill.js',
-      'tests/**/*.spec.jsx',
-      './components/pages/about/About.jsx',
-      './components/pages/contact/Contact.jsx',
-      './components/pages/blog/Blog.jsx',
-      './components/pages/discover/Discover.jsx',
+      'tests/**/*.spec.jsx'
     ],
     plugins: [webpack, 'karma-jasmine', 'karma-phantomjs-launcher', 'karma-coverage', 'karma-spec-reporter'],
     browsers: [ 'PhantomJS' ],
