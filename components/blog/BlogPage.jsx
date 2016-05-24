@@ -1,12 +1,13 @@
 import React from 'react';
+import './blog.scss';
 import { Link } from 'react-router';
 import _ from 'lodash';
 import BlogDetails from './BlogDetails.jsx';
 import BlogList from './BlogList.jsx';
 import { connect } from 'react-redux';
-import { fetchBlogPosts } from '../../../redux/actions';
+import { fetchBlogPosts } from '../../actions/blogActions';
 
-class Blog extends React.Component {
+class BlogPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,7 +42,7 @@ class Blog extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    blogPosts: state.default.blogPosts
+    blogPosts: state.blogPosts
   }
 }
 
@@ -53,4 +54,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Blog);
+export default connect(mapStateToProps, mapDispatchToProps)(BlogPage);

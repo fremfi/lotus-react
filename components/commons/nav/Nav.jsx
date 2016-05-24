@@ -1,4 +1,5 @@
 import React from 'react';
+import './nav.scss';
 import { Link, IndexLink } from 'react-router';
 
 class Nav extends React.Component{

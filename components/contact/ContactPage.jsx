@@ -1,7 +1,8 @@
 import React from 'react';
+import './contact.scss';
 import Toastr from 'toastr';
 
-class Contact extends React.Component{
+class ContactPage extends React.Component{
 	constructor() {
 		super();
     this.state = {
@@ -33,8 +34,6 @@ class Contact extends React.Component{
       data : JSON.stringify(this.state),
       contentType: 'application/json',
       success: function(data) {
-        console.log(data);
-        //TODO: display success
         this.setState({
           fullName: '',
           email: '',
@@ -51,7 +50,7 @@ class Contact extends React.Component{
 
 	render() {
 		return (
-			<div className="contact-content">
+			<div className="contact-page-content">
         <div className="row">
           <div className="col m12 l6">
             <div className="row">
@@ -116,4 +115,4 @@ class Contact extends React.Component{
 	}
 }
 
-export default Contact;
+export default ContactPage;

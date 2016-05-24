@@ -1,9 +1,10 @@
 import React from 'react';
+import './discover.scss';
 import Masonry from 'react-masonry-component';
 import { connect } from 'react-redux';
-import { fetchImages } from '../../../redux/actions';
+import { fetchImages } from '../../actions/discoverActions';
 
-class Discover extends React.Component {
+class DiscoverPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.isLoading = false;
@@ -57,7 +58,7 @@ class Discover extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		gallery: state.default.gallery
+		gallery: state.gallery
 	}
 }
 
@@ -69,4 +70,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Discover)
+export default connect(mapStateToProps, mapDispatchToProps)(DiscoverPage)

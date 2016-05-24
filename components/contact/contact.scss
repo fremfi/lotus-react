@@ -1,4 +1,4 @@
-@import '../../colors';
+@import '../commons/colors';
 
 .contact-phone-icon,
 .contact-email-icon,
@@ -20,6 +20,6 @@
 	color: $primary;
 }
 
-.contact-content {
+.contact-page-content {
   margin-top: 75px;
 }
